@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Vue的模板语法</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{name +'Lee'}}</div> <!--插值表达式 插值表达式里可以写js表达式-->
+        <div v-text="name +'Lee'"></div>  <!-- v-text:让div里innertext的内容变成name的值 功能与插值表达式类似 双引号里可以写js表达式-->
+        <div v-html="name"></div><!-- v-text:让div里html的内容变成name的值 -->
+    </div>
+     <script>
+         var vm = new Vue({
+            el: '#app',
+            data:{
+                name:"<h1>Dell</h1>"
+            }
+         })
+     </script>
+</body>
+</html>
