@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Hello World</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue"/>  <!-- //v-model:双向数据绑定 -->
+        <button v-on:click = "handleBtnClick">提交</button>
+        <ul>
+            <!-- <li v-for="item in list">{{item}}</li> -->
+            <todo-item v-bind:content="item" 
+                       v-bind:index="index"
+                       v-for="(item,index) in list"
+                       v-on:delete="handleItemDelete">    <!-- //通过list决定循环输出多少个todo-item,通过bind语法 -->
+            </todo-item>
+        </ul>
+    </div>
+    <script >
+
+       
+       var TodoItem = {  //定义局部组件,局部组件需要注册到vue实例里 子组件
+       	template:"<li v-on:click='handleItemClick'>{{content}}</li>",   
+       	props:['content','index'],
+        methods:{
+          handleItemClick: function(){
+            this.$emit("delete",this.index)   //向外触发delete事件
+          }
+        }
+       }
+
+        var app = new Vue({   //父组件
+            el: '#app',
+            components:{   //注册局部组件
+               TodoItem: TodoItem
+            },
+            data:{
+                list: [],
+                inputValue:''
+            },
+            methods:{
+                handleBtnClick: function(){
+                    this.list.push(this.inputValue);
+                    this.inputValue='';
+                    //alert(this.inputValue)   //data里的inputvalue
+                },
+                handleItemDelete: function(index){
+                    this.list.splice(index,1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
