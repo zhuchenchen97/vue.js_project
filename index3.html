@@ -11,11 +11,11 @@
         <button v-on:click = "handleBtnClick">提交</button>
         <ul>
             <!-- <li v-for="item in list">{{item}}</li> -->
-            <todo-item v-bind:content="item" 
+            <todo-item v-bind:content="item"  
                        v-bind:index="index"
                        v-for="(item,index) in list"
                        v-on:delete="handleItemDelete">    <!-- //通过list决定循环输出多少个todo-item,通过bind语法 -->
-            </todo-item>
+            </todo-item> 
         </ul>
     </div>
     <script >
