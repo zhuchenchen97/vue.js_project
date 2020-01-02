@@ -1,0 +1,51 @@
+<!-- 前端组件化 把页面的整体切割为一个一个组件 便于维护 每个组件为页面上的一个区域 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Hello World</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue"/>  <!-- //v-model:双向数据绑定 -->
+        <button v-on:click = "handleBtnClick">提交</button>
+        <ul>
+            <!-- <li v-for="item in list">{{item}}</li> -->
+            <todo-item v-bind:content="item" 
+                       v-for="item in list">    <!-- //通过list决定循环输出多少个todo-item,通过bind语法 -->
+            </todo-item>
+        </ul>
+    </div>
+    <script >
+
+       Vue.component("TodoItem",{       //定义全局组件TodoItem
+       	template:"<li>{{content}}</li>",  //组件模板,用组件标签时会被模板里的内容替换
+       	props:['content']   //在props里接收子组件传递的content
+       })
+       
+       var TodoItem2 = {  //定义局部组件,局部组件需要注册到vue实例里
+       	template:"<li>{{content}}</li>",   
+       	props:['content']  
+       }
+
+        var app = new Vue({
+            el: '#app',
+            components:{   //注册局部组件
+               TodoItem2: TodoItem2
+            },
+            data:{
+                list: [],
+                inputValue:''
+            },
+            methods:{
+                handleBtnClick: function(){
+                    this.list.push(this.inputValue);
+                    this.inputValue='';
+                    //alert(this.inputValue)   //data里的inputvalue
+                }
+            }
+        })
+    </script>
+</body>
+</html>
