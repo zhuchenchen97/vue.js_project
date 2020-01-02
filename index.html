@@ -6,18 +6,28 @@
 	<script type="text/javascript" src="./vue.js"></script>
 </head>
 <body>
-    <div id="app">{{content}}</div>
-    <script>
-    	var app = new Vue({  //创建vue实例
-            el: '#app',    //实例负责管理的区域
+    <div id="app">
+        <input type="text" v-model="inputValue"/>  //v-model:双向数据绑定
+        <button v-on:click = "handleBtnClick">提交</button>
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+    <script >
+        var app = new Vue({
+            el: '#app',
             data:{
-            	content: 'hello world'
+                list: [],
+                inputValue:''
+            },
+            methods:{
+                handleBtnClick: function(){
+                    this.list.push(this.inputValue);
+                    this.inputValue='';
+                    //alert(this.inputValue)   //data里的inputvalue
+                }
             }
-    	})
-
-    	setTimeout(function(){
-            app.$data.content = 'bye world'
-    	},2000)
+        })
     </script>
 </body>
 </html>
