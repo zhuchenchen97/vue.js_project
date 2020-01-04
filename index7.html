@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>计算属性，方法，侦听器</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- {{fistName +" "+ lastName}} -->
+        {{fullName}}
+        {{age}}
+    </div>
+     <script>
+         var vm = new Vue({
+            el: '#app',
+            data:{
+                firstName: "Chenchen",
+                lastName: "Zhu",
+                fullName:"Chenchen Zhu",
+                age:22
+            },
+            //侦听器 侦听firstName和lastName的改变
+            watch:{
+                firstName:function(){
+                    console.log("改变了一次");
+                    this.fullName = this.firstName+" "+this.lastName;
+                },
+                lastName:function(){
+                    console.log("改变了一次");
+                    this.fullName = this.firstName+" "+this.lastName;
+                }
+            }
+            //方法 无缓存机制 页面重新渲染的时候会重新调用方法
+            // methods:{
+            //     fullName:function(){
+            //         console.log("计算了一次");
+            //         return this.firstName+" "+this.lastName;
+            //     }
+            // }
+
+            //计算属性 计算属性拥有缓存机制 ：当firstName和lastName未改变时，不会重新计算fullName
+            // computed:{
+            //     fullName:function(){
+            //         console.log("计算了一次");
+            //         return this.firstName+" "+this.lastName;
+            //     }
+            // }
+         })
+     </script>
+</body>
+</html>
