@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Vue中的条件渲染</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-if="show">{{message}}</div>  <!-- //v-if="false" 不渲染元素  --> 
+        <div v-else>Bye World</div> <!--  //v-if和v-else要在连在一起使用 -->
+        <div v-show="show">{{message}}</div> <!-- //v-show="false"的display设为none,渲染 -->
+    </div>
+     <script>
+         var vm = new Vue({
+            el: '#app',
+            data:{
+                show:false,
+                message:"Hello World"
+            }
+
+         })
+     </script>
+</body>
+</html>
