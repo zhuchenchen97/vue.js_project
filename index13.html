@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Vue中的条件渲染3</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-if="show">用户名:<input key="username"/></div>   <!-- //在vue里两个元素的key值不同时将不会复用以前的标签 -->
+        <div v-else>邮箱名:<input key="password"/></div> 
+     <script>
+         var vm = new Vue({
+            el: '#app',
+            data:{
+                show:false,
+                message:"Hello World"
+            }
+         })
+     </script>
+</body>
+</html>
