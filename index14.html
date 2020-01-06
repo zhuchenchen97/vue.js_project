@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Vue中的列表渲染</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <template v-for="(item,index) of list"
+                  :key="item.id">
+            <div>   
+               {{item.text}} ----- {{index}}
+            </div>
+            <span>    
+                {{item.text}} 
+            </span>            
+        </template>  <!-- //在循环中template不会真正被渲染到页面上 -->
+
+    </div>
+
+     <script>
+        // push pop shift unshift splice sort reverse 不能在console里通过a[1]=1的方式修改数组，如果想改变数组，数组改变页面跟着变，要使用变异方法或者改变引用
+         var vm = new Vue({
+            el: '#app',
+            data:{
+                list:[{
+                    id:"010120201",
+                    text:"hello"
+                },{
+                    id:"010120202",
+                    text:"dell"
+                },{
+                    id:"010120203",
+                    text:"lee"
+                }]
+            }
+         })
+     </script>
+</body>
+</html>
