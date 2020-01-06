@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Vue中的set方法</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="(item,key,index) of userInfo">
+            {{item}} --- {{key}} -- {{index}}
+        </div>
+    </div>
+
+     <script>
+          //vm.$set(vm.userInfo,"address","beijing") 改变对象中的数据 页面重新渲染
+          //Vue.set(vm.userInfo,1,5)  改变数组中的元素 页面重新渲染
+          //vm.$set(vm.userInfo,2,10) 改变数组中的元素 页面重新渲染
+          var vm = new Vue({
+            el:"#app",
+            data:{
+              userInfo:{
+                name:"Dell",
+                age:22,
+                gender:"female"
+              }
+            }
+          })
+     </script>
+</body>
+</html>
