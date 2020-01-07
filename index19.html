@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ref的使用 counter</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+       <counter ref="one" @change="handleChange"></counter>
+       <counter ref="two" @change="handleChange"></counter>
+       <div>{{total}}</div>
+    </div>
+
+     <script>
+      Vue.component('counter',{
+           template: '<div @click="handleClick">{{number}}</div>',
+           data:function(){
+              return {
+                  number:0
+              }
+           },
+           methods:{
+              handleClick:function(){
+                this.number++;
+                this.$emit('change');   //触发子组件的change事件,执行父组件的handleChange事件
+              }
+           }
+      })
+          var vm = new Vue({
+               el:'#root',
+               data:{
+                total:0
+               },
+               methods:{
+                 handleChange:function(){
+                    this.total=this.$refs.one.number+this.$refs.two.number
+                 }
+               }
+          })
+     </script>
+</body>
+</html>
