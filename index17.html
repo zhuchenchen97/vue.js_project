@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>使用组件的细节点</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <table>
+          <tbody>  <!-- //tbody里一定要写tr 不能直接写row -->
+            <tr is="row"></tr>   <!-- //使用子组件 -->
+            <tr is="row"></tr>
+            <tr is="row"></tr>
+          </tbody>
+        </table>
+
+    </div>
+
+     <script>
+          Vue.component('row',{   //定义子组件
+              data:function(){   //在子组件里定义data时，data必须是个函数
+                  return {
+                    content:'this is a content'
+                  }
+              },
+              template:'<tr><td>{{content}}</td></tr>'
+          })
+
+          var vm = new Vue({
+               el:'#root'
+          })
+     </script>
+</body>
+</html>
