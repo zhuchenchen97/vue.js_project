@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Vue中操作dom</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+      <div
+          ref='hello'
+          @click = "handleClick"
+      >
+          hello world
+      </div>
+
+    </div>
+
+     <script>
+          var vm = new Vue({
+               el:'#root',
+               methods:{
+                handleClick:function(){
+                   console.log(this.$refs.hello.innerHTML);  //在Vue中通过refs获取dom节点
+                }
+               }
+          })
+     </script>
+</body>
+</html>
