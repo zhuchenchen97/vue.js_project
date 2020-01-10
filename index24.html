@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>给组件绑定原生事件方法2</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+         <child @click.native="handleCilck"></child>  <!-- //把自定义事件改为原生事件-->
+    </div>
+
+     <script>
+          Vue.component('child',{
+            template:'<div>Child</div>' //在div元素上绑定原生事件
+          })
+
+          var vm = new Vue({
+               el:'#root',
+               methods:{
+                handleCilck:function(){
+                   alert('click');
+                }
+               }
+          })
+     </script>
+</body>
+</html>
