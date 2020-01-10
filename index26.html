@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>在vue中使用插槽(slot)</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+          <child>
+            <p>Chen</p>   <!-- //插槽语句 -->
+          </child>
+    </div>
+
+     <script>
+          Vue.component('child',{   //引用插槽语句 如果父组件不写插槽语句，则显示slot默认值
+            template:`<div>  
+                         <p>hello</p>
+                         <slot>默认内容</slot>  
+                      </div>`, //ES6反撇号
+          })
+
+          var vm = new Vue({
+               el:'#root',
+          })
+     </script>
+</body>
+</html>
