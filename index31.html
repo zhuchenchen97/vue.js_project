@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Vue中CSS动画原理</title> <!-- 通过在某一时刻自动往元素里添加class名字 -->
+	<script type="text/javascript" src="./vue.js"></script>
+  <style>
+     .fade-enter{    /*在第一帧存在，第二帧时被移除*/
+        opacity: 0;
+     }
+     .fade-enter-active{   /*存在周期为第一帧到动画结束*/
+        transition: opacity 3s;   /*对opacity进行transition的监控，如果监控到opacity发生变化，会让opacity在3S内从0变到1*/
+     }
+     .fade-leave-to{   /*在第二帧存在，结束时被移除*/
+         opacity:0;
+     }
+     .fade-leave-active{    /*存在周期为第一帧到动画结束*/
+       transition: opacity 3s;
+     }
+  </style>
+</head>
+
+<body>
+    <div id="root">
+      <transition name="fade">   
+        <!--  transition包裹的内容里面会有一个过渡的动画效果 -->
+        <div v-if="show">Hello World</div>
+      </transition>
+        <button @click="handleClick">切换</button>
+    </div>
+
+     <script>
+          var vm = new Vue({
+               el:'#root',
+               data:{
+                  show:true
+               },
+               methods:{
+                handleClick:function(){
+                  this.show = !this.show;
+                }
+               }
+          })
+     </script>
+</body>
+</html>
