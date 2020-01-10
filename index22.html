@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>非props特性</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+         <child content="hello world"></child>
+    </div>
+
+     <script>
+      Vue.component('child',{
+           // // props: ['content'],
+           // props:{
+           //  //content:String  //约束子组件接收到的content必须是字符串类型
+           //  //content:[String ,Number]  ////content必须是字符串或者数字类型
+           //  content:{
+           //    type:String,
+           //    required:false,  //父组件是不是一定要传content
+           //    default:'default value',  //content默认值，在父组件没传的时候是default value
+           //    validator:function(value){
+           //         return value.length>5;   //要求传入content的长度必须大于5
+           //    }
+           //  }
+           // },
+           template:'<div>hello</div>'  //当父组件的content没有在props里写出来，则该属性会显示在dom标签中
+      })
+          var vm = new Vue({
+               el:'#root',
+  
+
+          })
+     </script>
+</body>
+</html>
