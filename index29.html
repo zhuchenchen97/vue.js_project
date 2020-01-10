@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>动态组件</title>
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+          <component :is="type"></component>  
+          <!-- 动态组件component：根据is里数据的变化，自动地加载不同的组件。type=child-one时显示child-one这个组件 -->
+          <button @click="handleBtnClick">change</button>
+    </div>
+
+     <script>
+          Vue.component('child-one',{ 
+               template:'<div>child-one</div>'
+          })  
+
+          Vue.component('child-two',{ 
+               template:'<div>child-two</div>'
+          })  
+
+          var vm = new Vue({
+               el:'#root',
+               data:{
+                   type:'child-one'
+               },
+               methods:{
+                handleBtnClick:function(){
+                    this.type = this.type==='child-one'?'child-two':'child-one';
+                }
+               }
+          })
+     </script>
+</body>
+</html>
