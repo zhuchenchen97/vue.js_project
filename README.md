@@ -1,2 +1,2 @@
 # vue.js_project
- 模仿去哪儿网
+ Using html/css/JS/Vue.js to complete a traveling website.
