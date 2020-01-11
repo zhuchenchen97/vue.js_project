@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Vue中的velocity.js实现动画</title>
+	<script type="text/javascript" src="./vue.js"></script>
+  <script type="text/javascript" src="./velocity.js"></script>
+</head>
+
+<body>
+    <div id="root">
+      <transition name="fade" 
+                  @before-enter="handleBeforeEnter"
+                  @enter="handleEnter"
+                  @after-enter="handleAfterEnter">   
+        <div v-if="show">Hello World</div>
+      </transition>
+        <button @click="handleClick">toggle</button>
+    </div>
+
+     <script>
+          var vm = new Vue({
+               el:'#root',
+               data:{
+                  show:true
+               },
+               methods:{
+                handleClick:function(){
+                  this.show = !this.show;
+                },
+                handleBeforeEnter:function(el){ 
+                   el.style.opacity = 0;
+                },
+                handleEnter:function(el,done){  
+                    Velocity(el,{opacity:1},{duration:1000,complete:done})  //当velocity执行完动画之后，complete属性对应的内容将会自动执行
+                },
+                handleAfterEnter:function(el){   
+                   alert("动画结束");
+                }
+               }
+          })
+     </script>
+</body>
+</html>
