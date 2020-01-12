@@ -2,14 +2,19 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+import router from './router'  //自动引入router文件夹下的index.js文件
+import fastClick from 'fastclick'  //解决有些机型300ms点击延迟的问题
+import './assets/styles/reset.css'  //解决不同机型css显示不同问题
+import './assets/styles/border.css' //解决1像素边框问题
 
 Vue.config.productionTip = false
+fastClick.attach(document.body)
 
 /* eslint-disable no-new */
 new Vue({ 
   el: '#app',
   router: router,
-  components: { App: App },
-  template: '<App/>'
+  components: { App: App }, //引入局部组件App
+  template: '<App/>'  //将App这个局部组件渲染到模板
 })
+//路由就是根据网址的不同返回不同的内容给用户
