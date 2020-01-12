@@ -4,7 +4,7 @@ import Home from '@/pages/home/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({   //配置路由
+export default new Router({ // 配置路由
   routes: [
     {
       path: '/', 
