@@ -7,9 +7,12 @@ import fastClick from 'fastclick' // 解决有些机型300ms点击延迟的问�
 import 'styles/reset.css' // 解决不同机型css显示不同问题
 import 'styles/border.css' // 解决1像素边框问题
 import 'styles/iconfont.css'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
+Vue.use(VueAwesomeSwiper)
 
 /* eslint-disable no-new */
 new Vue({
