@@ -42,8 +42,9 @@ export default { // 在子组件定义data时data是个函数
     	width: 100%
     	overflow: hidden
     	height: 0
-    	padding-bottom: 31.25% // 高度相当于宽度自动撑开31.25%
+    	padding-bottom: 30.5% // 高度相当于宽度自动撑开30.5%
     	background: #eee	
 		.swiper-img 
 			width: 100%
+  
 </style>
