@@ -1,12 +1,12 @@
 <template>
 	<div class="icons"> <!-- 外层元素做宽高比例 -->
 		<swiper>
-			<swiper-slide>
-				<div class="icon">
+			<swiper-slide v-for="(page,index) of pages" :key="index">
+				<div class="icon" v-for="item of page" :key="item.id">
 					<div class="icon-img">
-					    <img class='icon-img-content' src="http://s.qunarzz.com/homenode/images/touchheader/piao.png">				
+					    <img class='icon-img-content' :src="item.imgUrl">				
 					</div>
-					<p class="icon-desc">hot destination</p>
+					<p class="icon-desc">{{item.desc}}</p>
 				</div>	
 			</swiper-slide>
 	    </swiper>
@@ -16,9 +16,9 @@
 <script >
 export default {
 	name: 'HomeIcons',
-	data: function(){
+	data(){
 		return {
-			iconList: [{
+			iconsList: [{
 				id: '0001',
 				imgUrl: 'http://s.qunarzz.com/homenode/images/touchheader/piao.png',
 				desc:'hot destination'
@@ -56,12 +56,26 @@ export default {
 				desc:'hotel'				
 			}]
 		}
+	},
+	computed: {
+		pages () {
+			const pages = []
+			this.iconsList.forEach((item,index)=>{
+				const page = Math.floor(index/8)
+				if (!pages[page]){
+					pages[page] = []
+				}
+				pages[page].push(item)
+			})
+			return pages
+		}
 	}
 }	
 </script>
 
 <style lang="stylus" scoped>
     @import '~styles/variables.styl'
+    @import '~styles/mixins.styl'
 	.icons >>> .swiper-container
 		height: 0
 		padding-bottom: 50% // 宽高比为2
@@ -93,5 +107,6 @@ export default {
 			height: .44rem
 			text-align: center		
 			color: $darkTextColor
+			ellipsis()
 				
 </style>
