@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="title">热销推荐</div>
+		<div class="title">Hot products</div>
 		<ul>
 			<li class="item border-bottom" v-for="item of recommendList" :key="item.id">
 				<img class="item-img" :src="item.imgUrl">
@@ -22,17 +22,17 @@ export default {
 			recommendList:[{
 				id:'0001',
 				imgUrl:'https://media-cdn.tripadvisor.com/media/photo-s/1a/63/4f/ae/caption.jpg',
-				titile:'Vancouver Seaplane Tour',
+				title:'Vancouver Seaplane Tour',
 				desc:'See the city of Vancouver'
 			},{
 				id:'0002',
 				imgUrl:'https://media-cdn.tripadvisor.com/media/photo-s/1a/63/4f/ae/caption.jpg',
-				titile:'Vancouver Seaplane Tour',
+				title:'Vancouver Seaplane Tour',
 				desc:'See the city of Vancouver'
 			},{
 				id:'0003',
 				imgUrl:'https://media-cdn.tripadvisor.com/media/photo-s/1a/63/4f/ae/caption.jpg',
-				titile:'Vancouver Seaplane Tour',
+				title:'Vancouver Seaplane Tour',
 				desc:'See the city of Vancouver'
 			}]
 		}
