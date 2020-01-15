@@ -6,10 +6,12 @@
 	  <div class="header-input">
         <span class="iconfont">&#xe632;</span>
 	    please input cities/scenic destinations</div>
-	  <div class="header-right">
-	  	{{this.city}}
-	  	<span class="iconfont arrow-icon">&#xe6aa;</span>
-	  </div>
+	  <router-link to='/city'>
+          <div class="header-right">
+    	  	{{this.city}}
+    	  	<span class="iconfont arrow-icon">&#xe6aa;</span>
+    	  </div>
+    </router-link>
 	</div>	
 </template>
 
@@ -26,7 +28,7 @@ export default {
     // 1rem = html font-size = 50px
     @import '~styles/variables.styl'
     .header
-        line-height: .86rem
+        line-height: $headerHeight
         display: flex
         background: $bgColor
         color: #fff
@@ -44,12 +46,12 @@ export default {
         	margin-top : .12rem
         	margin-left : .2rem
         	padding-left: .12rem
-        	color: #ccc
-        .header-right
-        	width: 1.24rem
+        	color: #ccc   
+        .header-right 
+        	width: 1.24rem   
         	text-align: center
+        	color: #fff      
         	.arrow-icon
         		margin-left: -.04rem
-        		font-size: .24rem
-        	
+        		font-size: .24rem	
 </style>
