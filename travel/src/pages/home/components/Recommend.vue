@@ -2,7 +2,7 @@
 	<div>
 		<div class="title">Hot products</div>
 		<ul>
-			<li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+			<li class="item border-bottom" v-for="item of list" :key="item.id">
 				<img class="item-img" :src="item.imgUrl">
 				<div class="item-info">
 					<p class="item-title">{{item.title}}</p>
@@ -17,25 +17,8 @@
 <script >
 export default {
 	name: 'HomeRecommend',
-	data (){
-		return {
-			recommendList:[{
-				id:'0001',
-				imgUrl:'https://media-cdn.tripadvisor.com/media/photo-s/1a/63/4f/ae/caption.jpg',
-				title:'Vancouver Seaplane Tour',
-				desc:'See the city of Vancouver'
-			},{
-				id:'0002',
-				imgUrl:'https://media-cdn.tripadvisor.com/media/photo-s/1a/63/4f/ae/caption.jpg',
-				title:'Vancouver Seaplane Tour',
-				desc:'See the city of Vancouver'
-			},{
-				id:'0003',
-				imgUrl:'https://media-cdn.tripadvisor.com/media/photo-s/1a/63/4f/ae/caption.jpg',
-				title:'Vancouver Seaplane Tour',
-				desc:'See the city of Vancouver'
-			}]
-		}
+	props: {
+		list: Array
 	}
 }	
 </script>

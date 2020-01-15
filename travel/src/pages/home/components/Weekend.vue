@@ -2,7 +2,7 @@
 	<div>
 		<div class="title">Where to go on weekends</div>
 		<ul>
-			<li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+			<li class="item border-bottom" v-for="item of list" :key="item.id">
 				<div class="item-img-wrapper">
 					<img class="item-img" :src="item.imgUrl">		
 				</div>
@@ -18,40 +18,22 @@
 <script >
 export default {
 	name: 'HomeWeekend',
-	data (){
-		return {
-			recommendList:[{
-				id:'0001',
-				imgUrl:'https://media-cdn.tripadvisor.com/media/photo-s/1a/55/58/6b/caption.jpg',
-				title:'Vancouver Seaplane Tour',
-				desc:'See the city of Vancouver'
-			},{
-				id:'0002',
-				imgUrl:'https://media-cdn.tripadvisor.com/media/photo-s/1a/55/58/6b/caption.jpg',
-				title:'Vancouver Seaplane Tour',
-				desc:'See the city of Vancouver'
-			},{
-				id:'0003',
-				imgUrl:'https://media-cdn.tripadvisor.com/media/photo-s/1a/55/58/6b/caption.jpg',
-				title:'Vancouver Seaplane Tour',
-				desc:'See the city of Vancouver'
-			}]
-		}
-	}
+    props: {
+    	list: Array
+    }
 }	
 </script>
 
 <style lang="stylus" scoped>
     @import '~styles/mixins.styl'
 	.title
-		margin-top: .2rem
 		line-height: .8rem
 		background: #eee
 		text-indent: .2rem
 	.item-img-wrapper
 		overflow: hidden
 		height: 0
-		padding-bottom: 33.9%
+		padding-bottom: 37.09%
 		.item-img
 			width: 100%  
 	.item-info
