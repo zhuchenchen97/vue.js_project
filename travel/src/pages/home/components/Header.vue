@@ -7,7 +7,7 @@
         <span class="iconfont">&#xe632;</span>
 	    please input cities/scenic destinations</div>
 	  <div class="header-right">
-	  	cities
+	  	{{this.city}}
 	  	<span class="iconfont arrow-icon">&#xe6aa;</span>
 	  </div>
 	</div>	
@@ -15,7 +15,10 @@
 
 <script >
 export default {
-	name: 'HomeHeader'
+	name: 'HomeHeader',
+    props: {
+        city: String
+    }
 }
 </script>
 

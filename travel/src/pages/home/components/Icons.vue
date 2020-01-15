@@ -1,6 +1,6 @@
 <template>
 	<div class="icons"> <!-- 外层元素做宽高比例 -->
-		<swiper>
+		<swiper :options="swiperOption">
 			<swiper-slide v-for="(page,index) of pages" :key="index">
 				<div class="icon" v-for="item of page" :key="item.id">
 					<div class="icon-img">
@@ -16,51 +16,20 @@
 <script >
 export default {
 	name: 'HomeIcons',
-	data(){
-		return {
-			iconsList: [{
-				id: '0001',
-				imgUrl: 'http://s.qunarzz.com/homenode/images/touchheader/piao.png',
-				desc:'hot destination'
-			},{
-				id: '0002',
-				imgUrl: 'http://s.qunarzz.com/homenode/images/touchheader/flight.png',
-				desc:'flight'				
-			},{
-				id: '0003',
-				imgUrl: 'http://s.qunarzz.com/homenode/images/touchheader/train.png',
-				desc:'train'					
-			},{
-				id: '0004',
-				imgUrl: 'http://s.qunarzz.com/homenode/images/touchheader/package.png',
-				desc:'holiday'				
-			},{
-				id: '0005',
-				imgUrl: 'http://s.qunarzz.com/homenode/images/touchheader/piao.png',
-				desc:'hot destination'
-			},{
-				id: '0006',
-				imgUrl: 'http://s.qunarzz.com/homenode/images/touchheader/flight.png',
-				desc:'flight'				
-			},{
-				id: '0007',
-				imgUrl: 'http://s.qunarzz.com/homenode/images/touchheader/train.png',
-				desc:'train'					
-			},{
-				id: '0008',
-				imgUrl: 'http://s.qunarzz.com/homenode/images/touchheader/package.png',
-				desc:'holiday'				
-			},{
-				id: '0009',
-				imgUrl: 'http://s.qunarzz.com/homenode/images/touchheader/hotel.png',
-				desc:'hotel'				
-			}]
-		}
-	},
+    props: {
+    	list: Array
+    },
+    data () {
+    	return {
+    		swiperOption: {
+              autoplay: false
+    		}
+    	}
+    },
 	computed: {
 		pages () {
 			const pages = []
-			this.iconsList.forEach((item,index)=>{
+			this.list.forEach((item,index)=>{
 				const page = Math.floor(index/8)
 				if (!pages[page]){
 					pages[page] = []
