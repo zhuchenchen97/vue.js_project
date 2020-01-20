@@ -9,6 +9,7 @@ import 'styles/border.css' // 解决1像素边框问题
 import 'styles/iconfont.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+import store from './store/index.js'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
@@ -18,6 +19,7 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router: router,
+  store: store,
   components: { App: App }, // 引入局部组件App
   template: '<App/>'  // 将App这个局部组件渲染到模板
 })
